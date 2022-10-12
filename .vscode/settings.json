@@ -1,0 +1,14 @@
+{
+    "python.defaultInterpreterPath": "python",
+
+    "[python]": {
+        "gitlens.codeLens.symbolScopes": [
+            "!Module"
+        ],
+        "editor.wordBasedSuggestions": false,
+        "editor.formatOnSave": true
+    },
+    "python.formatting.blackPath": "black",
+    "python.formatting.provider": "black",
+    "editor.rulers": [ 88 ]
+}

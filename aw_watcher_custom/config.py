@@ -26,11 +26,9 @@ def parse_args():
     default_poll_time = config["poll_time"]
     default_process_name = config["process_name"]
 
-    parser = argparse.ArgumentParser(
-        "huantian's custom Activity Watch watcher."
-    )
-    parser.add_argument("--host", dest="host")
-    parser.add_argument("--port", dest="port")
+    parser = argparse.ArgumentParser("huantian's custom Activity Watch watcher.")
+    parser.add_argument("--host", dest="host", type=str)
+    parser.add_argument("--port", dest="port", type=int)
     parser.add_argument(
         "--testing", dest="testing", action="store_true", help="run in testing mode"
     )

@@ -8,13 +8,15 @@ from aw_core.models import Event
 
 from .config import load_config
 
+
 logger = logging.getLogger(__name__)
 td1ms = timedelta(milliseconds=1)
 
+
 def is_process_running(process_name: str) -> bool:
-    '''
-    Check if there is any running process that contains the given name processName.
-    '''
+    """
+    Check if there is any running process that contains the given name.
+    """
     for proc in psutil.process_iter():
         try:
             if process_name.lower() in proc.name().lower():
@@ -23,24 +25,25 @@ def is_process_running(process_name: str) -> bool:
             pass
     return False
 
+
 class Settings:
+    # How often we should poll for input activity
     poll_time: int
+    # Substring of names of processes to check
     process_name: str
 
     def __init__(self, config_section, poll_time=None, process_name=None):
-        # How often we should poll for input activity
         self.poll_time = poll_time or config_section["poll_time"]
-        # Substring of names of processes to check
         self.process_name = process_name or config_section["process_name"]
 
 
 class Watcher:
     def __init__(self, args, testing=False):
-        logging.info(load_config(testing))
-
         # Read settings from config
         self.settings = Settings(
-            load_config(testing), poll_time=args.poll_time, process_name=args.process_name
+            load_config(testing),
+            poll_time=args.poll_time,
+            process_name=args.process_name,
         )
 
         self.client = ActivityWatchClient(
@@ -95,7 +98,11 @@ class Watcher:
                 # Send a heartbeat if no state change was made
                 else:
                     if was_active:
-                        self.ping(was_active, timestamp=last_change, duration=seconds_since_change)
+                        self.ping(
+                            was_active,
+                            timestamp=last_change,
+                            duration=seconds_since_change,
+                        )
                     else:
                         self.ping(was_active, timestamp=last_change)
 

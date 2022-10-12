@@ -1,5 +1,5 @@
 {
-  description = "My custom window watcher (for use with ActivityWatch).";
+  description = "My custom process watcher (for use with ActivityWatch).";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -14,9 +14,15 @@
       pkgs = nixpkgs.legacyPackages.${system};
       python3 = pkgs.python310;
       aw-client = jtojnar.packages.${system}.aw-client;
-    in
-    {
-      defaultPackage = python3.pkgs.buildPythonApplication rec {
+    in rec {
+      devShells.default = pkgs.mkShell {
+        nativeBuildInputs = [
+          packages.default
+          pkgs.black
+        ];
+      };
+
+      packages.default = python3.pkgs.buildPythonApplication rec {
         pname = "aw-watcher-custom";
         version = "0.1.0";
 
@@ -35,7 +41,7 @@
         ];
 
         meta = with pkgs.lib; {
-          description = "My custom window watcher (for use with ActivityWatch).";
+          description = "My custom process watcher (for use with ActivityWatch).";
           homepage = "https://github.com/huantianh/aw-watcher-custom";
           maintainers = with maintainers; [ huantian ];
           license = licenses.mit;

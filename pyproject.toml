@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "aw-watcher-custom"
 version = "0.1.0"
-description = "My custom window watcher (for use with ActivityWatch)."
+description = "My custom process watcher (for use with ActivityWatch)."
 authors = ["David Li <davidtianli@gmail.com>"]
 license = "MIT"
 
