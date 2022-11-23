@@ -78,16 +78,11 @@ class Watcher:
             try:
                 now = datetime.now(timezone.utc)
                 now_active = is_process_running(self.settings.process_name)
-                logger.info(f"{self.settings.process_name}")
 
                 seconds_since_change = (now - last_change).seconds
 
-                logger.info(f"Seconds since last change: {seconds_since_change}")
-
                 # State changed!
                 if was_active != now_active:
-                    logger.info(f"State changed to {now_active=}")
-
                     # Send a heartbeat
                     self.ping(was_active, timestamp=last_change)
 

@@ -3,26 +3,31 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     flake-utils.url = "github:numtide/flake-utils";
-    jtojnar.url = "github:huantianad/jtojnar-nixfiles";
+
+    jtojnar.url = "github:jtojnar/nixfiles";
     jtojnar.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils, jtojnar, ... } @ inputs:
+  outputs = { self, nixpkgs, flake-utils, jtojnar }:
     flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
       python3 = pkgs.python310;
-      aw-client = jtojnar.packages.${system}.aw-client;
-    in rec {
+      aw-client = jtojnar.legacyPackages.${system}.aw-client;
+    in {
       devShells.default = pkgs.mkShell {
-        nativeBuildInputs = [
-          packages.default
-          pkgs.black
+        nativeBuildInputs = with pkgs; with python3.pkgs; [
+          black
+          poetry
+          setuptools
+          aw-client
+          psutil
         ];
       };
 
-      packages.default = python3.pkgs.buildPythonApplication rec {
+      packages.default = python3.pkgs.buildPythonApplication {
         pname = "aw-watcher-custom";
         version = "0.1.0";
 
@@ -30,8 +35,8 @@
 
         src = ./.;
 
-        nativeBuildInputs = [
-          python3.pkgs.poetry
+        nativeBuildInputs = with python3.pkgs; [
+          poetry
         ];
 
         propagatedBuildInputs = with python3.pkgs; [

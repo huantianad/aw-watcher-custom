@@ -146,16 +146,16 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla"
       },
       "locked": {
-        "lastModified": 1665514649,
-        "narHash": "sha256-zLP2kMYMnrMzpcmYZ6ha+i9ez2zNZCXbCOV8Y8vsS+4=",
-        "owner": "huantianad",
-        "repo": "jtojnar-nixfiles",
-        "rev": "3ab63a10e7cb50347f81b2fb064eb0ec2d1bb0bc",
+        "lastModified": 1669142971,
+        "narHash": "sha256-r2JCQRgT3MGpJpg7Jfz1NU64BZMRtT02DfbkqKsA/Pk=",
+        "owner": "jtojnar",
+        "repo": "nixfiles",
+        "rev": "6f1259cc301c8c5734ca7cadfd9c453c2e177d16",
         "type": "github"
       },
       "original": {
-        "owner": "huantianad",
-        "repo": "jtojnar-nixfiles",
+        "owner": "jtojnar",
+        "repo": "nixfiles",
         "type": "github"
       }
     },
@@ -189,16 +189,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1665436643,
-        "narHash": "sha256-zTx/GDs3tsazEolWL1z1wXZ1Of4biCgCFKNhu6EY3Mk=",
+        "lastModified": 1666256523,
+        "narHash": "sha256-MSzf6kYKW+QCtPyPp4/pgYMTh6F1Yf9mnfiFX360RpM=",
         "owner": "nix-community",
         "repo": "napalm",
-        "rev": "7a97ead66c5a6eff841d78b5748264c6f8ec5235",
+        "rev": "61f33f63fbab96e42d4537776091945939ea1a85",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "npm-pointers",
         "repo": "napalm",
         "type": "github"
       }
