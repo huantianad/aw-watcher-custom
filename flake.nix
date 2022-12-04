@@ -20,7 +20,7 @@
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; with python3.pkgs; [
           black
-          poetry
+          poetry-core
           setuptools
           aw-client
           psutil
@@ -36,7 +36,7 @@
         src = ./.;
 
         nativeBuildInputs = with python3.pkgs; [
-          poetry
+          poetry-core
         ];
 
         propagatedBuildInputs = with python3.pkgs; [
