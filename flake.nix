@@ -2,7 +2,7 @@
   description = "My custom process watcher (for use with ActivityWatch).";
 
   inputs = {
-    nixpkgs.url = "github:huantianad/nixpkgs/activitywatch"";
+    nixpkgs.url = "github:huantianad/nixpkgs/activitywatch";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
