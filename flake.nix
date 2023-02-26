@@ -2,12 +2,8 @@
   description = "My custom process watcher (for use with ActivityWatch).";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
+    nixpkgs.url = "github:huantianad/nixpkgs/activitywatch"";
     flake-utils.url = "github:numtide/flake-utils";
-
-    jtojnar.url = "github:jtojnar/nixfiles";
-    jtojnar.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, flake-utils, jtojnar }:
@@ -15,7 +11,6 @@
     let
       pkgs = nixpkgs.legacyPackages.${system};
       python3 = pkgs.python310;
-      aw-client = jtojnar.legacyPackages.${system}.aw-client;
     in {
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; with python3.pkgs; [
